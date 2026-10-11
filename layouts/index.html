@@ -1,0 +1,7 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  <h2>Latest posts</h2>
+  {{ partial "posts.html" (where site.RegularPages "Section" "posts") }}
+{{ end }}
+

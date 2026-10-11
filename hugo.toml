@@ -1,0 +1,12 @@
+baseURL = 'https://chairz.github.io/blogpost-learn-zenika/'
+languageCode = 'en-us'
+title = 'Learning Notes'
+enableRobotsTXT = true
+
+[params]
+  description = 'Notes on software engineering and technical learning.'
+
+[markup.highlight]
+  style = 'github'
+  lineNos = false
+

@@ -1,0 +1,12 @@
+{{ if . }}
+  <ul class="posts">
+  {{ range .ByDate.Reverse }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+    </li>
+  {{ end }}
+  </ul>
+{{ else }}
+  <p class="muted">No posts published yet.</p>
+{{ end }}
+
