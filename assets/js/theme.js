@@ -1,6 +1,5 @@
 (() => {
   const root = document.documentElement;
-  const system = window.matchMedia('(prefers-color-scheme: dark)');
   let choice = null;
   try {
     const saved = localStorage.getItem('learning-notes-theme');
@@ -10,7 +9,7 @@
   }
 
   function applyTheme() {
-    const dark = choice ? choice === 'dark' : system.matches;
+    const dark = choice !== 'light';
     root.dataset.theme = dark ? 'dark' : 'light';
     const button = document.getElementById('theme-toggle');
     if (button) {
@@ -20,7 +19,6 @@
   }
 
   applyTheme();
-  system.addEventListener('change', applyTheme);
   document.addEventListener('DOMContentLoaded', () => {
     applyTheme();
     document.getElementById('theme-toggle').addEventListener('click', () => {
