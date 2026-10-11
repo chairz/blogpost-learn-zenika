@@ -9,4 +9,3 @@ enableRobotsTXT = true
 [markup.highlight]
   style = 'github'
   lineNos = false
-

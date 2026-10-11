@@ -33,4 +33,3 @@ fi
 mkdir -p "$repo_dir/.tools/bin"
 tar -xzf "$download_dir/$archive" -C "$repo_dir/.tools/bin" hugo
 "$target" version
-
