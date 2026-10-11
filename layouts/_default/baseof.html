@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if not .IsHome }}{{ .Title }} · {{ end }}{{ site.Title }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
-  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  {{ $theme := resources.Get "js/theme.js" | minify | fingerprint }}
+  <script src="{{ $theme.RelPermalink }}" integrity="{{ $theme.Data.Integrity }}"></script>
+  {{ $css := slice (resources.Get "css/main.css") (resources.Get "css/highlight.css") | resources.Concat "css/site.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
-    <nav aria-label="Main navigation"><a href="{{ "posts/" | relURL }}">Posts</a></nav>
+    <nav aria-label="Main navigation">
+      <a href="{{ "posts/" | relURL }}">Posts</a>
+      <button id="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false" hidden>Dark mode</button>
+    </nav>
   </header>
   <main>{{ block "main" . }}{{ end }}</main>
   <footer>Built with <a href="https://gohugo.io/">Hugo</a>.</footer>
